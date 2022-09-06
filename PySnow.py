@@ -9,10 +9,12 @@ def snow():
 	scelta = str(input("--> "))
 	if scelta == "1":
 		try: 
-			text = input('''\nContenitore: ''')
+			text = input("Contenitore: ")
 			secret_msg = input("\nMessaggio segreto: ")
 			newfile = input("\nNuovo nome: ") + ".txt"
-			encoded = usteg.encode(text, secret_msg)
+			with open(text, "r") as dec:
+				contain = dec.read()
+			encoded = usteg.encode(contain, secret_msg)
 			with open(newfile, "w") as steg:
 				steg.write(encoded)
 			print("\nFatto... Messaggio nascosto...")
