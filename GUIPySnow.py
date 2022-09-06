@@ -10,6 +10,7 @@ def snow_gui():
 	finestra = tk.Tk()
 	finestra.title("PySnow")
 	finestra.configure(bg="black")
+	#finestra.iconbitmap("icouriel.ico")
 	frame1 = tk.Frame(finestra, bg="black")
 	frame1.pack()
 	
@@ -21,6 +22,7 @@ def snow_gui():
 			window = tk.Tk()
 			window.title("PySnow")
 			window.configure(bg="black")
+			#window.iconbitmap("icouriel.ico")
 			frame1 = tk.Frame(window)
 			frame1.pack()
 			frame2 = tk.Frame(window, bg="black")
@@ -169,6 +171,7 @@ def snow_gui():
 			window = tk.Tk()
 			window.title("PySnow")
 			window.configure(bg="black")
+			#window.iconbitmap("icouriel.ico")
 			#Widgets
 			title = tk.Label(text="PySnow",
 				fg= "white",
@@ -213,17 +216,17 @@ def snow_gui():
 	buttons_style = ttk.Style()
 	buttons_style.configure('my.TButton', font=('Times', 8))
 	
-	empty = tk.Label(text="* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
+	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)	
 		
-	title = tk.Label(text="* * *   PySnow   * * *",
+	title = tk.Label(text="-   PySnow   -",
 		fg= "white",
 		bg= "black",
 		font=("Times", 18,  "bold"),
 		height=2)
 	title.pack(fill=tk.X)
 	
-	empty = tk.Label(text="* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
+	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
 	
 	empty = tk.Label(bg="black")
@@ -241,7 +244,7 @@ def snow_gui():
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X)
 	
-	empty = tk.Label(text="* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
+	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
 	
 	empty = tk.Label(bg="black", text="\n\n")
