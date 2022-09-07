@@ -4,7 +4,9 @@ from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 import os
 import subprocess
+import webbrowser
 import pyUnicodeSteganography as usteg
+import webbrowser
 
 def snow_gui():
 	finestra = tk.Tk()
@@ -40,6 +42,7 @@ def snow_gui():
 		        title='Fatto!',
 		        message=f"Messaggio nascosto nel file {newfile}!"
 		    	)
+				webbrowser.open('.')
 				refresh()
 			
 			def stegsnow():
