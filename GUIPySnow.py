@@ -34,11 +34,9 @@ def snow_gui():
 			#Functions
 			secret_message = ""
 			container = "" #path
-			#newfile = "" #path
 			final_path = ""
 
 			def done():
-				#global newfile
 				global final_path
 				showinfo(
 				title='Fatto!',
@@ -52,7 +50,6 @@ def snow_gui():
 			def stegsnow():
 				global secret_message
 				global container
-				#global newfile
 				global final_path
 				
 				with open(container, "r", encoding='utf-8') as tohide:
@@ -85,11 +82,8 @@ def snow_gui():
 			def hide():
 				global secret_message
 				global container
-				global newfile
 				secret_message = message.get("1.0", tk.END)
 				message.delete("1.0", tk.END)
-				#newfile = newfileentry.get() + ".txt"
-				#newfileentry.delete("0", tk.END)
 				stegsnow()
 			
 			def exithide():
