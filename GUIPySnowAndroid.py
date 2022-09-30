@@ -35,22 +35,22 @@ def snow_gui():
 			def done():
 				global newfile
 				showinfo(
-		        title='Fatto!',
-		        message=f"Messaggio nascosto nel file {newfile}!"
+		        title='Done!',
+		        message="Message hidden."
 		    	)
 				refresh()
 			
 			def stegsnow():
 				global secret_message
 				global container
-                                with open(container, "r", encoding='utf-8') as tohide:
+				with open(container, "r", encoding='utf-8') as tohide:
 					cont = tohide.read()
 				encoded = usteg.encode(cont, secret_message)
 				filetypes = (
 						('testo', '*.txt'),
 						('all', '.*')
 						)
-				final_path = fd.asksaveasfilename(initialdir="/storage/emulated/0", title="Salva", filetypes=filetypes, defaultextension=".txt")
+				final_path = fd.asksaveasfilename(initialdir="/storage/emulated/0", title="Save", filetypes=filetypes, defaultextension=".txt")
 				with open(final_path, "w", encoding='utf-8') as finalpath:
 					finalpath.write(encoded)
 				done()
@@ -62,7 +62,7 @@ def snow_gui():
 				        ('all', '.*')
 				        )
 				container = fd.askopenfilename(
-				title='Testo Contenitore:  ',
+				title='Container Text:  ',
 				initialdir='/storage/emulated/0',
 				filetypes=filetypes)
 				path["state"] = "normal"
@@ -72,11 +72,8 @@ def snow_gui():
 			def hide():
 				global secret_message
 				global container
-				global newfile
 				secret_message = message.get("1.0", tk.END)
 				message.delete("1.0", tk.END)
-				newfile = newfileentry.get() + ".txt"
-				newfileentry.delete("0", tk.END)
 				stegsnow()
 			
 			def exithide():
@@ -94,42 +91,42 @@ def snow_gui():
 				font=("Times", 14, "bold"))
 			title.pack(fill=tk.X)
 			
-			message_label = tk.Label(frame1, text="\n\nScrivi qui il messaggio segreto: ", bg="black", fg="white", font=("Times", 7))
+			message_label = tk.Label(frame1, text="\n\nWrite here the secret message: ", bg="black", fg="white", font=("Times", 7))
 			message_label.pack(fill=tk.X)
 			
 			message = tk.Text(frame1, padx=15, pady=15, height=8, font=("Times", 7), wrap="word")
 			message.pack()
 			
-			select_label = tk.Label(frame1, text="\nScegli il file di testo \nin cui nascondere il tuo messaggio: ", bg="black", fg="white", font=("Times", 7))
+			select_label = tk.Label(frame1, text="\nChoose the text file \nin which you want to hide your message: ", bg="black", fg="white", font=("Times", 7))
 			select_label.pack(fill=tk.X)
 			
 			path = tk.Entry(frame1, state="disabled")
 			path.pack(side=tk.LEFT)
 			
-			filebutt = ttk.Button(frame1, text="Scegli File", style="my.TButton", command=select_container)
+			filebutt = ttk.Button(frame1, text="Choose File", style="my.TButton", command=select_container)
 			filebutt.pack(side=tk.RIGHT)
 			
 			empty = tk.Label(frame2, bg="black").pack(fill=tk.X)
 			
-			final_label = tk.Label(frame2, text="\nNome del file finale: ", bg="black", fg="white", font=("Times", 7))
+			'''final_label = tk.Label(frame2, text="\nNome del file finale: ", bg="black", fg="white", font=("Times", 7))
 			final_label.pack(fill=tk.X)
 			
 			newfileentry = tk.Entry(frame2)
-			newfileentry.pack()
+			newfileentry.pack()'''
 			
 			empty = tk.Label(frame2, bg="black").pack(fill=tk.X)
 			
-			hidebutton = ttk.Button(frame2, text="Nascondi", style="big.TButton", command=hide)
+			hidebutton = ttk.Button(frame2, text="Hide", style="big.TButton", command=hide)
 			hidebutton.pack()
 			
 			empty = tk.Label(frame2, text="\n\n", bg="black").pack(fill=tk.X)
 			
-			refreshbutton = ttk.Button(frame2, text="Pulisci", style="my.TButton", command=refresh)
+			refreshbutton = ttk.Button(frame2, text="Clean", style="my.TButton", command=refresh)
 			refreshbutton.pack(side=tk.LEFT)
 			
 			empty = tk.Label(frame2, bg="black").pack(side=tk.LEFT)
 			
-			exitbutton = ttk.Button(frame2, text="Esci", style="my.TButton", command=exithide)
+			exitbutton = ttk.Button(frame2, text="Exit", style="my.TButton", command=exithide)
 			exitbutton.pack(side=tk.LEFT)
 			
 			window.mainloop()
@@ -160,7 +157,7 @@ def snow_gui():
 			def toopen():
 				global file_path
 				file_path = fd.askopenfilename(
-					title='Testo Contenitore:  ',
+					title='Container Text:  ',
 					initialdir='/storage/emulated/0', 
 					filetypes=(('text', '*.txt'), ('all', '.*'))
 					)
@@ -185,7 +182,7 @@ def snow_gui():
 			empty = tk.Label(bg="black")
 			empty.pack(fill=tk.X)
 			
-			openfile = ttk.Button(text="Apri file", command=toopen)
+			openfile = ttk.Button(text="Open file", command=toopen)
 			openfile.pack()
 			
 			opened = tk.Label(bg="black", fg="white", font=("Times", 7))
@@ -199,13 +196,13 @@ def snow_gui():
 			showtext = tk.Text(padx=15, pady=15, height=7, wrap="word", state="disabled", font=("Times", 7))
 			showtext.pack()
 			
-			extractbutt = ttk.Button(text="Estrai", command=extract2)
+			extractbutt = ttk.Button(text="Retrieve", command=extract2)
 			extractbutt.pack()
 			
-			cleanbutt = ttk.Button(text="Pulisci", command=refresh)
+			cleanbutt = ttk.Button(text="Clean", command=refresh)
 			cleanbutt.pack(side=tk.LEFT)
 			
-			exitbutt = ttk.Button(text="Esci", command=principal)
+			exitbutt = ttk.Button(text="Exit", command=principal)
 			exitbutt.pack(side=tk.RIGHT)
 			
 			window.mainloop()
@@ -219,7 +216,7 @@ def snow_gui():
 	buttons_style = ttk.Style()
 	buttons_style.configure('my.TButton', font=('Times', 8))
 	
-	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
+	'''empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)	
 		
 	title = tk.Label(text="-   PySnow   -",
@@ -227,7 +224,12 @@ def snow_gui():
 		bg= "black",
 		font=("Times", 18,  "bold"),
 		height=2)
-	title.pack(fill=tk.X)
+	title.pack(fill=tk.X)'''
+	
+	pslogo = tk.PhotoImage(file="pysnowlogo2.png")
+	pssmallerlogo = pslogo.subsample(2, 2)
+	ps = tk.Label(image=pssmallerlogo, bg='white')
+	ps.pack(fill=tk.X)
 	
 	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
@@ -235,13 +237,13 @@ def snow_gui():
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X)
 	
-	nascondibutt = ttk.Button(text="Nascondi",style="my.TButton", command=hide)
+	nascondibutt = ttk.Button(text="Hide",style="my.TButton", command=hide)
 	nascondibutt.pack()
 	
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X)
 	
-	estraibutt = ttk.Button(text="Estrai", style="my.TButton", command=extract)
+	estraibutt = ttk.Button(text="Retrieve", style="my.TButton", command=extract)
 	estraibutt.pack()
 	
 	empty = tk.Label(bg="black")
@@ -250,7 +252,7 @@ def snow_gui():
 	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
 	
-	empty = tk.Label(bg="black", text="\n\n")
+	empty = tk.Label(bg="black", text="\n")
 	empty.pack(fill=tk.X)
 	
 	#Image
@@ -265,7 +267,7 @@ def snow_gui():
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X, side=tk.BOTTOM)
 	
-	esci = ttk.Button(text="Esci", style="my.TButton", command=exit)
+	esci = ttk.Button(text="Exit", style="my.TButton", command=exit)
 	esci.pack(side=tk.BOTTOM)
 	
 	finestra.mainloop()
