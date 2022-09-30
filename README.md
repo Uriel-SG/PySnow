@@ -9,4 +9,7 @@ Avalaible:
 - A friendly tkinter GUI version;
 
 
+Example:
+
+[![Watch the video](https://raw.githubusercontent.com/Uriel-SG/PySnow/main/example.jpg)](https://youtu.be/N5zItze2ZKE)
 
