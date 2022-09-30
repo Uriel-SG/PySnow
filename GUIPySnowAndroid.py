@@ -31,7 +31,6 @@ def snow_gui():
 			#Functions
 			secret_message = ""
 			container = "" #path
-			newfile = "" #path
 			
 			def done():
 				global newfile
@@ -44,14 +43,18 @@ def snow_gui():
 			def stegsnow():
 				global secret_message
 				global container
-				global newfile
-				with open(container, "r") as tohide:
+                                with open(container, "r", encoding='utf-8') as tohide:
 					cont = tohide.read()
 				encoded = usteg.encode(cont, secret_message)
-				with open(newfile, "w") as final:
-					final.write(encoded)
+				filetypes = (
+						('testo', '*.txt'),
+						('all', '.*')
+						)
+				final_path = fd.asksaveasfilename(initialdir="/storage/emulated/0", title="Salva", filetypes=filetypes, defaultextension=".txt")
+				with open(final_path, "w", encoding='utf-8') as finalpath:
+					finalpath.write(encoded)
 				done()
-			
+				
 			def select_container():
 				global container
 				filetypes = (
