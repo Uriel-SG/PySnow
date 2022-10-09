@@ -11,9 +11,9 @@ import pyUnicodeSteganography as usteg
 def snow_gui():
 	finestra = tk.Tk()
 	finestra.title("PySnow")
-	finestra.geometry("600x690")
+	finestra.geometry("600x780")
 	finestra.configure(bg="black")
-	finestra.iconbitmap("icouriel.ico")
+	finestra.iconbitmap("pysnowicon.ico")
 	frame1 = tk.Frame(finestra, bg="black")
 	frame1.pack()
 	
@@ -25,7 +25,7 @@ def snow_gui():
 			window = tk.Tk()
 			window.title("PySnow")
 			window.configure(bg="black")
-			window.iconbitmap("icouriel.ico")
+			window.iconbitmap("pysnowicon.ico")
 			frame1 = tk.Frame(window)
 			frame1.pack()
 			frame2 = tk.Frame(window, bg="black")
@@ -34,9 +34,11 @@ def snow_gui():
 			#Functions
 			secret_message = ""
 			container = "" #path
+			#newfile = "" #path
 			final_path = ""
 
 			def done():
+				#global newfile
 				global final_path
 				showinfo(
 				title='Fatto!',
@@ -50,6 +52,7 @@ def snow_gui():
 			def stegsnow():
 				global secret_message
 				global container
+				#global newfile
 				global final_path
 				
 				with open(container, "r", encoding='utf-8') as tohide:
@@ -82,8 +85,11 @@ def snow_gui():
 			def hide():
 				global secret_message
 				global container
+				global newfile
 				secret_message = message.get("1.0", tk.END)
 				message.delete("1.0", tk.END)
+				#newfile = newfileentry.get() + ".txt"
+				#newfileentry.delete("0", tk.END)
 				stegsnow()
 			
 			def exithide():
@@ -181,7 +187,7 @@ def snow_gui():
 			window = tk.Tk()
 			window.title("PySnow")
 			window.configure(bg="black")
-			window.iconbitmap("icouriel.ico")
+			window.iconbitmap("pysnowicon.ico")
 			#Widgets
 			title = tk.Label(text="PySnow",
 				fg= "white",
@@ -224,17 +230,12 @@ def snow_gui():
 	
 	#Widgets
 	buttons_style = ttk.Style()
-	buttons_style.configure('my.TButton', font=('Times', 12))
+	buttons_style.configure('my.TButton', font=('Times', 11))
 	
-	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
-	empty.pack(fill=tk.X)	
-		
-	title = tk.Label(text="-   PySnow   -",
-		fg= "white",
-		bg= "black",
-		font=("Times", 24,  "bold"),
-		height=2)
-	title.pack(fill=tk.X)
+	pslogo = tk.PhotoImage(file="pysnowlogo2.png")
+	pssmallerlogo = pslogo.subsample(2, 2)
+	ps = tk.Label(image=pssmallerlogo, bg='white')
+	ps.pack(fill=tk.X)
 	
 	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
@@ -257,12 +258,12 @@ def snow_gui():
 	empty = tk.Label(text="° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° °")
 	empty.pack(fill=tk.X)
 	
-	empty = tk.Label(bg="black", text="\n\n")
+	empty = tk.Label(bg="black", text="\n")
 	empty.pack(fill=tk.X)
 	
 	#Image
 	logo = tk.PhotoImage(file="uriel-white.png")
-	smallerlogo = logo.subsample(2, 2)
+	smallerlogo = logo.subsample(3, 3)
 	uriel = tk.Label(image=smallerlogo, bg='black')
 	uriel.pack(fill=tk.X)
 	
@@ -272,12 +273,9 @@ def snow_gui():
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X, side=tk.BOTTOM)
 	
-	def exitprog():
-		finestra.destroy()
-
-	esci = ttk.Button(text="Esci", style="my.TButton", command=exitprog)
+	esci = ttk.Button(text="Esci", style="my.TButton", command=exit)
 	esci.pack(side=tk.BOTTOM)
-	
+
 	finestra.mainloop()
 	
 snow_gui()
