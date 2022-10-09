@@ -273,7 +273,10 @@ def snow_gui():
 	empty = tk.Label(bg="black")
 	empty.pack(fill=tk.X, side=tk.BOTTOM)
 	
-	esci = ttk.Button(text="Esci", style="my.TButton", command=exit)
+	def exitall():
+		finestra.destroy()
+
+	esci = ttk.Button(text="Esci", style="my.TButton", command=exitall)
 	esci.pack(side=tk.BOTTOM)
 
 	finestra.mainloop()
